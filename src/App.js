@@ -1,73 +1,44 @@
 import React, { Component } from 'react';
-import Header from './components/layout/Header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import uuid from 'uuid';
-
 import './App.css';
+import fire from './components/fire';
+import Main from './components/Main';
+import Login from './components/Login';
 
 class App extends Component {
-
-  state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: 'Get Milk!',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Do Assignment',
-        completed: false
-      }
-    ]
+  constructor() {
+    super();
+    this.state = ({
+      user: null,
+    });
+    this.authListener = this.authListener.bind(this);
   }
 
-  // Toggle complete method
-  markComplete = (id) => {
-    this.setState({
-      todos: this.state.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed
-        }
-        return todo;
-      })
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem('user', user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem('user');
+      }
     });
   }
 
-  // Delete Item
-
-  delTodo = (id) => {
-    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
-  }
-
-  // Add todo
-
-  addTodo = (title) => {
-    const newTodo = {
-      title: title,
-      id: uuid.v4(),
-      completed: false
-    }
-
-    this.setState({ todos: [...this.state.todos, newTodo] })
-  }
-
   render() {
-
     return (
       <div className="App">
-        <div className="container">
-          <Header />
-          <AddTodo addTodo={this.addTodo} />
-          <Todos todos={this.state.todos} markComplete={this.markComplete}
-            delTodo={this.delTodo} />
-        </div>
+        {this.state.user ? (
+          <Main />
+        ) :
+          (
+            <Login />
+          )}
       </div>
     );
   }

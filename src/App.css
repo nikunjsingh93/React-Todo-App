@@ -12,7 +12,8 @@
 .btn {
   border: none;
   padding: 7px 20px;
-  background: #555;
+  background:#03AEB5;
   color: #fff;
   cursor: pointer;
+  font-weight: bold;
 }

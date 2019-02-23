@@ -1,12 +1,13 @@
 {
-  "name": "react-to-do",
+  "name": "react-todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5",
-    "uuid": "^3.3.2"
+    "bootstrap": "^4.3.1",
+    "firebase": "^5.8.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

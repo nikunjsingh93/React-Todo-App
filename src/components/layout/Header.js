@@ -3,14 +3,14 @@ import React from 'react';
 function Header() {
     return(
         <header style={headerStyle}>
-            <h1>Todo List</h1>
+            <h2>Just a simple Todo</h2>
         </header>
     )
 }
 
 const headerStyle = {
     textAlign: 'center',
-    background: '#333',
+    background: '#03AEB5',
     color: '#fff'
 }
 

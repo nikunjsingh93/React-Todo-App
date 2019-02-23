@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import fire from './fire';
+
 
 export class AddTodo extends Component {
  state = {
@@ -10,6 +12,23 @@ export class AddTodo extends Component {
  onSubmit = (e) => {
      e.preventDefault();
      this.props.addTodo(this.state.title);
+
+
+     const userUid = fire.auth().currentUser.uid;
+
+     fire.database().ref('UsersList/').child(userUid).child('AllTasks/').push({
+      Task: this.state.title,
+      
+     // Completed: false
+     }).then((data)=>{
+      //success callback
+      console.log('data ' , data)
+  }).catch((error)=>{
+      //error callback
+      console.log('error ' , error)
+  })
+
+
      this.setState({ title: '' })
  }
 
@@ -17,13 +36,15 @@ export class AddTodo extends Component {
   render() {
     return (
       <form style={{ display: 'flex'}} onSubmit={this.onSubmit}>
-          <input type='text' placeholder=' Add Todo...'
+      
+          <input  placeholder=' Add Todo...'
            name='title' style={{ flex: '10' }} 
            value={this.state.title} 
-           onChange={this.onChange}/>
+           onChange={this.onChange}
+           />
 
-           <input type='submit' value='Submit'
-           className='btn' style={{ flex: '1' }}  />
+           <input type='submit' value='Add It!'
+           className='btn btn-primary' style={{ flex: '1' }}  />
       </form>
     )
   }
