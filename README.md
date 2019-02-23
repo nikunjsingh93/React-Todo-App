@@ -8,8 +8,9 @@ Wep App Link: https://react-todo-25477.firebaseapp.com/
 ![web1](https://user-images.githubusercontent.com/31995471/53291346-8b5ccd80-377f-11e9-8247-347091144a5b.png)
 
 
-![web2](https://user-images.githubusercontent.com/31995471/53291347-8c8dfa80-377f-11e9-8304-238e646c7ecd.png)
 
+
+![web2](https://user-images.githubusercontent.com/31995471/53291347-8c8dfa80-377f-11e9-8304-238e646c7ecd.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
