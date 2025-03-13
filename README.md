@@ -1,7 +1,6 @@
 # React Todo App
 Sync your Todo tasks on the cloud. React on front end and Firebase on the backend.
 
-Wep App Link: https://react-todo-25477.firebaseapp.com/
 
 # Screenshots
 
